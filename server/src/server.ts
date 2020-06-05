@@ -1,16 +1,13 @@
 import express, { request, response } from 'express';
+import routes from './routes';
+import path from 'path';
 
 const app = express();
 
-app.get('/users', (request, response) => {
-  console.log('Users List');
+app.use(express.json());
 
-  response.json([
-    'Gary',
-    'John',
-    'Louis',
-    'Peter'
-  ]);
-})
+app.use(routes);
+
+app.use('/assets', express.static(path.resolve(__dirname, "..", 'assets')));
 
 app.listen(3333);
