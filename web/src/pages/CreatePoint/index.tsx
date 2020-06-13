@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
@@ -25,9 +25,7 @@ const CreatePoint: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
   const [regions, setRegions] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState("0");
-  const [selectedLocation, setSelectedLocation] = useState("0");
-  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
+
   const [currentPosition, setCurrentPosition] = useState<[number, number]>([0, 0]);
   const [markerVisibility, setMarkerVisibility] = useState(false);
 
@@ -37,7 +35,12 @@ const CreatePoint: React.FC = () => {
     phone: ""
   })
 
+  const [selectedRegion, setSelectedRegion] = useState("0");
+  const [selectedLocation, setSelectedLocation] = useState("0");
+  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const history = useHistory();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -127,6 +130,8 @@ const CreatePoint: React.FC = () => {
     await api.post('points', data);
 
     alert('New service successfully created!');
+
+    history.push('/');
   }
 
   return (
