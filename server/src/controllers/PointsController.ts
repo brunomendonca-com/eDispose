@@ -3,28 +3,12 @@ import knex from "../database/connection";
 
 class PointsController {
   async index(request: Request, response: Response) {
-    const { city, province, items } = request.query;
+    const points = await knex("points").select("*");
 
-    const parsedItems = String(items)
-      .split(",")
-      .map((item) => Number(item.trim()));
-
-    const points = await knex("points")
-      .join("point_items", "points.id", "=", "point_items.point_id")
-      .whereIn("point_items.item_id", parsedItems)
-      .where("city", String(city))
-      .where("province", String(province))
-      .distinct()
-      .select("points.*");
-
-    response.json({ points });
-
-    // const points = await knex("points").select("*");
-
-    //     if (!points || points.length == 0) {
-    //       return response.status(400).json({ message: "Points not found" });
-    //     }
-    // return response.json(points);
+        if (!points || points.length == 0) {
+          return response.status(400).json({ message: "Points not found" });
+        }
+    return response.json(points);
   }
 
   async show(request: Request, response: Response) {
@@ -49,12 +33,10 @@ class PointsController {
       name,
       email,
       phone,
-      whatsapp,
+      region,
+      location,
       latitude,
       longitude,
-      address,
-      city,
-      province,
       items,
     } = request.body;
 
@@ -66,12 +48,10 @@ class PointsController {
       name,
       email,
       phone,
-      whatsapp,
+      region,
+      location,
       latitude,
       longitude,
-      address,
-      city,
-      province,
     };
 
     const insertedIds = await trx("points").insert(point);
@@ -84,6 +64,7 @@ class PointsController {
         point_id,
       };
     });
+
     try {
       await trx("point_items").insert(pointItems);
       await trx.commit();

@@ -16,6 +16,6 @@ routes.get("/points", pointsController.index);
 routes.get('/points/:id', pointsController.show);
 
 routes.get("/locations", locationsController.index);
-routes.get("/locations/:slug", locationsController.show);
+routes.get("/locations/:region", locationsController.show);
 
 export default routes;

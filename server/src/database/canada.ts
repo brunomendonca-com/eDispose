@@ -1,6 +1,6 @@
 const Canada = [
   {
-    slug: "AB",
+    initials: "AB",
     name: "Alberta",
     cities: [
       "Calgary",
@@ -26,7 +26,7 @@ const Canada = [
     ],
   },
   {
-    slug: "BC",
+    initials: "BC",
     name: "British Columbia",
     cities: [
       "Vancouver",
@@ -63,7 +63,7 @@ const Canada = [
     ],
   },
   {
-    slug: "MB",
+    initials: "MB",
     name: "Manitoba",
     cities: [
       "Winnipeg",
@@ -89,12 +89,12 @@ const Canada = [
     ],
   },
   {
-    slug: "NB",
+    initials: "NB",
     name: "New Brunswick",
     cities: ["Moncton", "Saint John", "Fredericton", "Edmundston", "Bathurst"],
   },
   {
-    slug: "NL",
+    initials: "NL",
     name: "Newfoundland and Labrador",
     cities: [
       "Saint John’s",
@@ -119,7 +119,7 @@ const Canada = [
     ],
   },
   {
-    slug: "NS",
+    initials: "NS",
     name: "Nova Scotia",
     cities: [
       "Halifax",
@@ -136,7 +136,7 @@ const Canada = [
     ],
   },
   {
-    slug: "NT",
+    initials: "NT",
     name: "Northwest Territories",
     cities: [
       "Yellowknife",
@@ -157,7 +157,7 @@ const Canada = [
     ],
   },
   {
-    slug: "NU",
+    initials: "NU",
     name: "Nunavut",
     cities: [
       "Iqaluit",
@@ -185,7 +185,7 @@ const Canada = [
     ],
   },
   {
-    slug: "ON",
+    initials: "ON",
     name: "Ontario",
     cities: [
       "Toronto",
@@ -238,12 +238,12 @@ const Canada = [
     ],
   },
   {
-    slug: "PE",
+    initials: "PE",
     name: "Prince Edward Island",
     cities: ["Charlottetown"],
   },
   {
-    slug: "QC",
+    initials: "QC",
     name: "Quebec",
     cities: [
       "Montréal",
@@ -285,7 +285,7 @@ const Canada = [
     ],
   },
   {
-    slug: "SK",
+    initials: "SK",
     name: "Saskatchewan",
     cities: [
       "Saskatoon",
@@ -307,7 +307,7 @@ const Canada = [
     ],
   },
   {
-    slug: "YT",
+    initials: "YT",
     name: "Yukon",
     cities: ["Whitehorse", "West Dawson", "Watson Lake", "Burwash Landing"],
   },

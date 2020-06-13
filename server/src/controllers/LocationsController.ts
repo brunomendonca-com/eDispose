@@ -8,26 +8,17 @@ class LocationsController {
   }
 
   async show(request: Request, response: Response) {
-    const { slug } = request.params;
+    const { region } = request.params;
 
-    const data = Canada.filter((location) => location.slug == slug).map(
-      (location) => location.cities
-    );
+    const filteredResult = Canada.find(({ initials }) => initials === (region.toUpperCase()));
 
-    function flatten(arr) {
-      return arr.reduce(function (flat, toFlatten) {
-        return flat.concat(
-          Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten
-        );
-      }, []);
+    const locations = filteredResult?.cities;
+
+    if (!locations) {
+      return response.status(400).json({ message: "Locations not found" });
     }
 
-    const cities = flatten(data);
-
-    if (!cities) {
-      return response.status(400).json({ message: "Cities not found" });
-    }
-    return response.json({ cities });
+    return response.json({ locations });
   }
 }
 
